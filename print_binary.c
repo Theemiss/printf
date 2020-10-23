@@ -1,7 +1,11 @@
 #include "holberton.h"
 
 /**
+ * print_binary - print unsigned int as a binary
+ * @format_spec: format_specifier should be "%b"
+ * @ap: va_list pointer containing unsigned int to convert and print
  *
+ * Return: number of printed charachters
  */
 
 int print_binary(char *format_spec, va_list ap)
