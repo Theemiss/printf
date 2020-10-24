@@ -10,5 +10,6 @@ int print_octal(char *, va_list);
 int print_hex(char *, va_list);
 int print_char(va_list ap);
 int print_int(va_list ap);
+int print_decimal(va_list ap);
 
 #endif
