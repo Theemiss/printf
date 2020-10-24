@@ -39,3 +39,5 @@ while (aux != 0)
 	count++;
 	return (count);
 }
+// tested working//
+// no betty style yet //
