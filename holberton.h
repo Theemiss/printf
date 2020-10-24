@@ -13,6 +13,7 @@ int print_int(va_list ap);
 int print_decimal(va_list ap);
 int print_string(va_list ap);
 int (*format_specifiers(const char *format))(va_list);
+int _printf(const char *format, ...);
 
 /**
  * struct print - multiple choice print

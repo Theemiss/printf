@@ -5,7 +5,7 @@
  * 
  * Return : function to be printed
  */
-int (*format_specifiers(const char *format))(va_list)	
+int (*format_specifiers(const char *format))(va_list)
 {
 	unsigned int i = 0;
 t_print t[] = {
@@ -21,7 +21,7 @@ t_print t[] = {
 	};
 while (t[i].f != NULL)
 {
-	if (*(t[j].f) == format[i])
+	if (*(t[i].f) == format[i])
 	{
 		break;
 	}
