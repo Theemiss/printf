@@ -11,5 +11,19 @@ int print_hex(char *, va_list);
 int print_char(va_list ap);
 int print_int(va_list ap);
 int print_decimal(va_list ap);
+int print_string(va_list ap);
+int (*format_specifiers(const char *format))(va_list);
+
+/**
+ * struct print - multiple choice print
+ * @x: char Type of print
+ * @T_func: funct
+ */
+typedef struct print
+{
+	char *f;
+	void (*print_T)(va_list);
+} t_print;
+
 
 #endif
