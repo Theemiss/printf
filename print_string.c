@@ -8,14 +8,12 @@
 int print_string(modifier_t *modif, va_list ap)
 {
 	char *str;
-	char _case;
 	unsigned int count = 0, i;
 
 if (!ap || !modif)
 		return (0);
 
 	str = va_arg(ap, char *);
-	_case = modif->specifier == 's';
 	for (i = 0; str[i]; i++)
 	{
 		_putchar(str[i]);

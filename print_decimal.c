@@ -8,13 +8,11 @@ int print_decimal(modifier_t *modif,va_list ap)
 {
 	int long x, count = 0, aux, num = 1;
 	unsigned int long div = 1 ;
-	char _case;
 	
 	if (!ap || !modif)
 		return (0);
 
 	x = va_arg(ap, int);
-	_case = modif->specifier == 'd';
 	if (x < 0)
 	{
 		_putchar('-');
