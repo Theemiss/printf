@@ -4,13 +4,13 @@
  * @ap:va_list pointer for integer handle %d
  * Return:int length
  */
-int print_decimal(va_list ap)
+int print_decimal(va_list d)
 {
 	int long x, count = 0, aux, num = 1;
 	unsigned int long div = 1 ;
 	
 
-	x = va_arg(ap, int);
+	x = va_arg(d, int);
 	if (x < 0)
 	{
 		_putchar('-');

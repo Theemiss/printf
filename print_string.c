@@ -5,18 +5,18 @@
  * @ap:va_list pointer containing a string
  * Return:string lenght
  */
-int print_string(va_list ap)
+int print_string(va_list s)
 {
 	char *str;
-	unsigned int count;
+	unsigned int count = 0, i;
 
-	str = va_arg(ap, char*);
+	str = va_arg(s, char *);
 	if (str == NULL)
 		str = "(null)";
-
-	for (count = 0; str[count]; count++)
+	for (i = 0; str[i]; i++)
 	{
-		_putchar(str[count]);
+		_putchar(str[i]);
+		count++;
 	}
 return (count);
 

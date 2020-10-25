@@ -29,9 +29,12 @@ int print_binary(char *, va_list);
 int print_unsigned_int(char *, va_list);
 int print_octal(char *, va_list);
 int print_hex(char *, va_list);
-int print_char(va_list ap);
-int print_int(va_list ap);
-int print_decimal(va_list ap);
+int print_char(va_list c);
+int print_int(va_list i);
+int print_decimal(va_list d);
+char print_rot(va_list R);
+int print_string(va_list s);
+int print_rev(va_list r);
 /**
  *
  */
@@ -44,7 +47,6 @@ modifier_t *get_modifier(char *, unsigned int*);
 /**
  *
  */
-int print_string(va_list ap);
 int (*format_specifiers(const char *format, int i))(va_list);
 int _printf(const char *format, ...);
 
