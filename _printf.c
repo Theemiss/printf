@@ -66,7 +66,7 @@ int (*get_print_func(char c))(modifier_t *, va_list)
 		{'o', print_octal},
 		{'x', print_hex},
 		{'X', print_hex},
-		//{'b', print_binary},
+		{'b', print_binary},
 		{'\0', NULL}
 	};
 
