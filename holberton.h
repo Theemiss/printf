@@ -29,11 +29,11 @@ int print_binary(modifier_t *, va_list);
 int print_unsigned_int(modifier_t *, va_list);
 int print_octal(modifier_t *, va_list);
 int print_hex(modifier_t *, va_list);
-int print_char(va_list ap);
+int print_char (modifier_t *, va_list ap);
 int print_int(va_list ap);
 int print_decimal(va_list ap);
 char print_rot(va_list R);
-int print_string(va_list s);
+int print_string(modifier_t *modif, va_list ap);
 int print_rev(va_list r);
 /**
  *

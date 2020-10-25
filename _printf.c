@@ -58,8 +58,10 @@ int (*get_print_func(char c))(modifier_t *, va_list)
 {
 	int i;
 	t_print t[] = {
-		/*{'c', print_char},
+		{'c', print_char},
 		{'s', print_string},
+		/*{'i', print_int},
+		{'d', print_decimal},
 		{'i', print_int},
 		{'d', print_decimal},*/
 		{'u', print_unsigned_int},
