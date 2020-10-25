@@ -45,7 +45,7 @@ modifier_t *get_modifier(char *, unsigned int*);
  *
  */
 int print_string(va_list ap);
-int (*format_specifiers(const char *format))(va_list);
+int (*format_specifiers(const char *format, int i))(va_list);
 int _printf(const char *format, ...);
 
 /**
@@ -56,7 +56,7 @@ int _printf(const char *format, ...);
 typedef struct print
 {
 	char *f;
-	void (*print_T)(va_list);
+	int (*func)(va_list);
 } t_print;
 
 /**

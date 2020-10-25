@@ -1,5 +1,4 @@
 #include "holberton.h"
-
 /**
  * print_char - print a single char
  * @ap: va_list pointer
@@ -10,7 +9,7 @@ int print_char (va_list ap)
 	char c;
 
 
-	c = va_arg(ap, char);
+	c = (char)va_arg(ap, int);
 
 	_putchar(c);
 
