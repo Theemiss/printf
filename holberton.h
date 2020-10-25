@@ -32,6 +32,9 @@ int print_hex(modifier_t *, va_list);
 int print_char(va_list ap);
 int print_int(va_list ap);
 int print_decimal(va_list ap);
+char print_rot(va_list R);
+int print_string(va_list s);
+int print_rev(va_list r);
 /**
  *
  */
@@ -41,11 +44,6 @@ int get_precision(const char *, unsigned int*);
 char *get_length(const char *, unsigned int*);
 char get_specifier(const char *, unsigned int*);
 modifier_t *get_modifier(const char *, unsigned int*);
-/**
- *
- */
-int print_string(va_list ap);
-int (*format_specifiers(const char *format, int i))(modifier_t *, va_list);
 int _printf(const char *format, ...);
 
 /**

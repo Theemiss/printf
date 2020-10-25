@@ -4,12 +4,12 @@
  * @ap: va_list pointer
  * Return: one char count
  */
-int print_char (va_list ap)
+int print_char (va_list c)
 {
-	char c;
+	char ch;
 
 
-	c = (char)va_arg(ap, int);
+	ch = (char)va_arg(c, int);
 
 	_putchar(c);
 
