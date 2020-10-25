@@ -44,3 +44,33 @@ modifier_t *get_modifier(char *s, unsigned int *pos)
 	(*pos) = i;
 	return (modif);
 }
+int _printf(const char *format, ...)
+{
+	va_list ap;
+	int (*fun_p)(va_list);
+	unsigned int i,count =0;
+	if (format == '\0')
+	{
+		return(-1);
+	}
+	va_start(ap, format);
+	while (format && format[i])
+	{
+		if (format[i] != '%')
+		{
+			_putchar(format[i]);
+			count++;
+		}
+		else if (format[i] == '%')
+		{
+			i = i + 1 ;
+			fun_p == format_specifiers(format, i);
+			count = count + f(va_list);
+		}
+		else 
+			return(count);
+		
+	}
+va_end(ap);
+return(count);
+}
