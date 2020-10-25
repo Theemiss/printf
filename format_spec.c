@@ -16,7 +16,7 @@ t_print t[] = {
 		{"u", print_unsigned_int},
 		{"o", print_octal},
 		{"x", print_hex},
-		{"b", print_binary}
+		{"b", print_binary},
 		{NULL, NULL}
 	};
 while (t[i].f != NULL)
@@ -25,6 +25,7 @@ while (t[i].f != NULL)
 	{
 		break;
 	}
-	return (t[i].print_T(va_list);
-
+	return (t[i].print_T);
+	
+}
 }
