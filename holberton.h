@@ -32,7 +32,7 @@ int print_hex(modifier_t *, va_list);
 int print_char (modifier_t *, va_list ap);
 int print_int(modifier_t *,va_list ap);
 int print_decimal(modifier_t *, va_list ap);
-char print_rot(va_list R);
+int print_rot(modifier_t *, va_list ap);
 int print_string(modifier_t *modif, va_list ap);
 int print_rev(va_list r);
 /**
@@ -60,5 +60,6 @@ typedef struct print
 /**
  *
  */
-
+//----converter---//
+char *rot13(char *s);
 #endif
