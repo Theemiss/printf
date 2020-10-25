@@ -2,23 +2,22 @@
 
 /**
  * print_hex - print usigned decimal as hexadecimal
- * @format_spec: format_specifier should be "%x" for lowercase or
- * "%X" for uppercase
+ * @modif: struct modifier containig modifier fields
  * @ap: va_list pointer containig unsigned int to print
  *
  * Return: number of printed characters
  */
 
-int print_hex(char *format_spec, va_list ap)
+int print_hex(modifier_t *modif, va_list ap)
 {
 	unsigned int count = 0, n, aux;
 	int i = 0;
 	char buffer[8], _case;
 
-	if (!ap || !format_spec)
+	if (!ap || !modif)
 		return (0);
 	n = va_arg(ap, unsigned int);
-	_case = format_spec[1] == 'x' ? 'a' : 'A';
+	_case = modif->specifier == 'x' ? 'a' : 'A';
 	if (n == 0)
 	{
 		_putchar('0');

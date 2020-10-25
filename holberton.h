@@ -28,24 +28,24 @@ int _putchar(char c);
 int print_binary(char *, va_list);
 int print_unsigned_int(char *, va_list);
 int print_octal(char *, va_list);
-int print_hex(char *, va_list);
+int print_hex(modifier_t *, va_list);
 int print_char(va_list ap);
 int print_int(va_list ap);
 int print_decimal(va_list ap);
 /**
  *
  */
-char *get_flags(char*, unsigned int*);
-int get_width(char *, unsigned int*);
-int get_precision(char *, unsigned int*);
-char *get_length(char *, unsigned int*);
-char get_specifier(char *, unsigned int*);
-modifier_t *get_modifier(char *, unsigned int*);
+char *get_flags(const char*, unsigned int*);
+int get_width(const char *, unsigned int*);
+int get_precision(const char *, unsigned int*);
+char *get_length(const char *, unsigned int*);
+char get_specifier(const char *, unsigned int*);
+modifier_t *get_modifier(const char *, unsigned int*);
 /**
  *
  */
 int print_string(va_list ap);
-int (*format_specifiers(const char *format, int i))(va_list);
+int (*format_specifiers(const char *format, int i))(modifier_t *, va_list);
 int _printf(const char *format, ...);
 
 /**
@@ -55,8 +55,8 @@ int _printf(const char *format, ...);
  */
 typedef struct print
 {
-	char *f;
-	int (*func)(va_list);
+	char f;
+	int (*func)(modifier_t *, va_list);
 } t_print;
 
 /**
