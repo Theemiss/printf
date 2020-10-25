@@ -44,11 +44,22 @@ modifier_t *get_modifier(char *s, unsigned int *pos)
 	(*pos) = i;
 	return (modif);
 }
+
+/**
+ *
+ */
+
+
+/**
+ *
+ */
 int _printf(const char *format, ...)
 {
 	va_list ap;
-	int (*fun_p)(va_list);
+	int (*fun_p)(modifier_t, va_list);
+	modifier_t *modif;
 	unsigned int i,count =0;
+
 	if (format == '\0')
 	{
 		return(-1);
@@ -56,21 +67,23 @@ int _printf(const char *format, ...)
 	va_start(ap, format);
 	while (format && format[i])
 	{
-		if (format[i] != '%')
+		if (format[i] == '%')
+		{
+			modif = get_modifier(format, &i);
+			if (modif == NULL)
+				_putchar(format[i]);
+			else
+			{
+				fun_p == get_print_func(modif->specifier);
+				count = count + fun_p(modif, ap);
+			}
+		}		
+		else
 		{
 			_putchar(format[i]);
 			count++;
 		}
-		else if (format[i] == '%')
-		{
-			i = i + 1 ;
-			fun_p == format_specifiers(format, i);
-			count = count + f(va_list);
-		}
-		else 
-			return(count);
-		
 	}
-va_end(ap);
-return(count);
+	va_end(ap);
+	return(count);
 }
