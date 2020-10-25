@@ -26,8 +26,8 @@ typedef struct modifier
 
 int _putchar(char c);
 int print_binary(char *, va_list);
-int print_unsigned_int(char *, va_list);
-int print_octal(char *, va_list);
+int print_unsigned_int(modifier_t *, va_list);
+int print_octal(modifier_t *, va_list);
 int print_hex(modifier_t *, va_list);
 int print_char (modifier_t *, va_list ap);
 int print_int(va_list ap);

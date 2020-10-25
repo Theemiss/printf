@@ -15,7 +15,7 @@ if (!ap || !modif)
 		return (0);
 
 	str = va_arg(ap, char *);
-	_case = modif->specifier == '';
+	_case = modif->specifier == 's';
 	for (i = 0; str[i]; i++)
 	{
 		_putchar(str[i]);
