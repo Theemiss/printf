@@ -6,12 +6,11 @@
  */
 int print_char (modifier_t *modif, va_list ap)
 {
-	char ch, _case;
+	char ch;
 	if (!ap || !modif)
 		return (0);
 
 	ch = (char)va_arg(ap, int);
-		_case = modif->specifier == 'c';
 		_putchar(ch);
 
 		return (1);

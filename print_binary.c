@@ -2,19 +2,19 @@
 
 /**
  * print_binary - print unsigned int as a binary
- * @format_spec: format_specifier should be "%b"
+ * @modif: struct containing modifier fields
  * @ap: va_list pointer containing unsigned int to convert and print
  *
  * Return: number of printed charachters
  */
 
-int print_binary(char *format_spec, va_list ap)
+int print_binary(modifier_t *modif, va_list ap)
 {
 	unsigned int count = 0, n;
 	int i = 0;
 	char binary[32];
 
-	if (!ap || !format_spec)
+	if (!ap || !modif || modif->specifier != 'b')
 		return (0);
 	n = va_arg(ap, unsigned int);
 	while (n)

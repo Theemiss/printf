@@ -25,7 +25,7 @@ typedef struct modifier
 } modifier_t;
 
 int _putchar(char c);
-int print_binary(char *, va_list);
+int print_binary(modifier_t *, va_list);
 int print_unsigned_int(modifier_t *, va_list);
 int print_octal(modifier_t *, va_list);
 int print_hex(modifier_t *, va_list);
