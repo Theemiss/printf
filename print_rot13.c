@@ -31,7 +31,6 @@ char *rot13(char *s)
  */
 int print_rot(modifier_t *modif, va_list ap)
 {	char *str, *s;
-	char _case;
 	unsigned int count = 0, i;
 
 if (!ap || !modif)
@@ -39,10 +38,9 @@ if (!ap || !modif)
 
 	str = va_arg(ap, char *);
 	s = rot13(str);
-	_case = modif->specifier == 'R';
-	for (i = 0; str[i]; i++)
+	for (i = 0; s[i]; i++)
 	{
-		_putchar(str[i]);
+		_putchar(s[i]);
 		count++;
 	}
 return (count);
