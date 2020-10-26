@@ -10,7 +10,7 @@
 int print_pointer(modifier_t *modif, va_list ap)
 {
 	long int p, aux;
-	char buffer[16];
+	char buffer[1024];
 	int i = 0, count = 0;
 
 	if (!modif || !ap || modif->specifier != 'p')
