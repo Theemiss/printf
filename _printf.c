@@ -77,10 +77,8 @@ int (*get_print_func(char c))(modifier_t *, va_list)
 		{'r', print_rev},
 		{'\0', NULL}
 	};
-	printf("inside get_func\n");
 	for (i = 0; t[i].f; i++)
 	{
-		printf("i = %d | t[i].f = %c | c = %c\n", i, t[i].f, c);
 		if (t[i].f == c)
 			return (t[i].func);
 	}
@@ -110,29 +108,40 @@ int _printf(const char *format, ...)
 	{
 		if (format[i] == '%')
 		{
-			end_pos = i;
-			modif = get_modifier(format, &end_pos);
-			if (modif == NULL)
+			if (format[i + 1] == '%')
+			{
+				i += 2;
+				_putchar(format[i - 1]);
+				count++;
+			}
+			else if (format[i + 1] == '\0')
 			{
 				_putchar(format[i++]);
 				count++;
 			}
 			else
 			{
-				fun_p = get_print_func(modif->specifier);
-				if (fun_p != NULL)
-				{
-					printf("got func != NULL\n");
-					printed = fun_p(modif, ap);
-printf("flag: %s | width: %d | prec: %d | length: %s | spec: %c |\n", modif->flags, modif->width, modif->precision, modif->length, modif->specifier);
-	 
-					count += printed;
-					i = end_pos + 1;
-				}
-				else
+				end_pos = i;
+				modif = get_modifier(format, &end_pos);
+				if (modif == NULL)
 				{
 					_putchar(format[i++]);
 					count++;
+				}
+				else
+				{
+					fun_p = get_print_func(modif->specifier);
+					if (fun_p != NULL)
+					{
+						printed = fun_p(modif, ap);
+						count += printed;
+						i = end_pos + 1;
+					}
+					else
+					{
+						_putchar(format[i++]);
+						count++;
+					}
 				}
 			}
 		}
