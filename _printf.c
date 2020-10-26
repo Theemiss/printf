@@ -74,6 +74,7 @@ int (*get_print_func(char c))(modifier_t *, va_list)
 		{'b', print_binary},
 		{'S', print_big_s},
 		{'p', print_pointer},
+		{'r', print_rev},
 		{'\0', NULL}
 	};
 	printf("inside get_func\n");
