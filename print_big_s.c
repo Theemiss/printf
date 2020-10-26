@@ -41,7 +41,7 @@ int print_big_s(modifier_t *modif, va_list ap)
 	for (i = 0; str[i]; i++)
 	{
 		c = str[i];
-		if ((c > 0 && c <= 32) || c >= 127)
+		if ((c > 0 && c < 32) || c >= 127)
 		{
 			_putchar(92);
 			_putchar('x');
