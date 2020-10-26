@@ -65,7 +65,7 @@ int (*get_print_func(char c))(modifier_t *, va_list)
 		{'c', print_char},
 		{'s', print_string},
 		{'i', print_int},
-		{'d', print_decimal},
+		{'d', print_int},
 		{'u', print_unsigned_int},
 		{'R', print_rot},
 		{'o', print_octal},
