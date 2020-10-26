@@ -31,8 +31,8 @@ void ctox(char c)
  */
 int print_big_s(modifier_t *modif, va_list ap)
 {
-	char *str, c;
-	unsigned int count = 0, i;
+	char *str;
+	unsigned int count = 0, i, c;
 
 	if (!ap || !modif || modif->specifier != 'S')
 		return (0);
