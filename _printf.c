@@ -62,21 +62,20 @@ int (*get_print_func(char c))(modifier_t *, va_list)
 {
 	int i;
 	t_print t[] = {
-		{'c', print_char},
-		{'s', print_string},
-		{'i', print_int},
-		{'d', print_int},
-		{'u', print_unsigned_int},
-		{'R', print_rot},
-		{'o', print_octal},
-		{'x', print_hex},
-		{'X', print_hex},
-		{'b', print_binary},
-		{'S', print_big_s},
-		{'p', print_pointer},
-		{'r', print_rev},
-		{'\0', NULL}
-	};
+	    {'c', print_char},
+	    {'s', print_string},
+	    {'i', print_int},
+	    {'d', print_int},
+	    {'u', print_unsigned_int},
+	    {'R', print_rot},
+	    {'o', print_octal},
+	    {'x', print_hex},
+	    {'X', print_hex},
+	    {'b', print_binary},
+	    {'S', print_big_s},
+	    {'p', print_pointer},
+	    {'r', print_rev},
+	    {'\0', NULL}};
 	for (i = 0; t[i].f; i++)
 	{
 		if (t[i].f == c)
@@ -99,7 +98,7 @@ int _printf(const char *format, ...)
 	modifier_t *modif;
 	unsigned int i = 0, printed, end_pos, count = 0;
 
-	if (!format || !format[0] )
+	if (!format || !format[0])
 	{
 		return (-1);
 	}
@@ -134,6 +133,7 @@ int _printf(const char *format, ...)
 					if (fun_p != NULL)
 					{
 						printed = fun_p(modif, ap);
+						free(modif);
 						count += printed;
 						i = end_pos + 1;
 					}
