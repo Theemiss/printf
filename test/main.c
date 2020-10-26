@@ -9,19 +9,7 @@
  */
 int main(void)
 {
-
-    _printf("Unknown:[%R]\n", "encrypted message");#include <limits.h>
-#include <stdio.h>
-#include "holberton.h"
-
-/**
- * main - Entry point
- *
- * Return: Always 0
- */
-int main(void)
-{
-    int len;
+   /** int len;
     int len2;
     unsigned int ui;
     void *addr;
@@ -51,7 +39,7 @@ int main(void)
     _printf("Len:[%d]\n", len);
     printf("Len:[%d]\n", len2);
     _printf("Unknown:[%r]\n");
-    printf("Unknown:[%r]\n");
+    printf("Unknown:[%r]\n");*/
     _printf("%%\n");
 _printf("%");
 _printf("%%r\n");
