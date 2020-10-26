@@ -17,6 +17,11 @@ int print_binary(modifier_t *modif, va_list ap)
 	if (!ap || !modif || modif->specifier != 'b')
 		return (0);
 	n = va_arg(ap, unsigned int);
+	if (n == 0)
+	{
+		_putchar('0');
+		return (1);
+	}
 	while (n)
 	{
 		i++;
