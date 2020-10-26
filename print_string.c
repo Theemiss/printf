@@ -16,7 +16,9 @@ int print_string(modifier_t *modif, va_list ap)
 		return (0);
 	str = va_arg(ap, char *);
 	if (str == NULL)
-		str = "(null)";
+	{	str = "(null)";
+		Return(-1);
+	}
 	for (i = 0; str[i]; i++)
 	{
 		_putchar(str[i]);
