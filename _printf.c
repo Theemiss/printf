@@ -67,7 +67,6 @@ int (*get_print_func(char c))(modifier_t *, va_list)
 	    {'i', print_int},
 	    {'d', print_int},
 	    {'u', print_unsigned_int},
-	    {'R', print_rot},
 	    {'o', print_octal},
 	    {'x', print_hex},
 	    {'X', print_hex},
@@ -140,6 +139,7 @@ int _printf(const char *format, ...)
 					else
 					{
 						_putchar(format[i++]);
+						free(modif);
 						count++;
 					}
 				}

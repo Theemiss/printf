@@ -30,25 +30,23 @@ int print_binary(modifier_t *, va_list);
 int print_unsigned_int(modifier_t *, va_list);
 int print_octal(modifier_t *, va_list);
 int print_hex(modifier_t *, va_list);
-int print_char (modifier_t *, va_list ap);
-int print_int(modifier_t *,va_list ap);
+int print_char(modifier_t *, va_list ap);
+int print_int(modifier_t *, va_list ap);
 int print_decimal(modifier_t *, va_list ap);
-int print_rot(modifier_t *, va_list ap);
 int print_string(modifier_t *modif, va_list ap);
 int print_rev(modifier_t *, va_list ap);
 int print_big_s(modifier_t *, va_list);
 int print_pointer(modifier_t *, va_list);
-int _strlen(char *s);
 
 /**
  *
  */
-char *get_flags(const char*, unsigned int*);
-int get_width(const char *, unsigned int*);
-int get_precision(const char *, unsigned int*);
-char *get_length(const char *, unsigned int*);
-char get_specifier(const char *, unsigned int*);
-modifier_t *get_modifier(const char *, unsigned int*);
+char *get_flags(const char *, unsigned int *);
+int get_width(const char *, unsigned int *);
+int get_precision(const char *, unsigned int *);
+char *get_length(const char *, unsigned int *);
+char get_specifier(const char *, unsigned int *);
+modifier_t *get_modifier(const char *, unsigned int *);
 int _printf(const char *format, ...);
 
 /**
@@ -66,5 +64,4 @@ typedef struct print
  *
  */
 //----converter---//
-char *rot13(char *s);
 #endif
