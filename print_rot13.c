@@ -53,7 +53,8 @@ char *rot13(char *str)
  * Return: count of string
  */
 int print_rot(modifier_t *modif, va_list ap)
-{	char *str, *s;
+{
+	char *str, *s;
 	unsigned int count = 0, i;
 
 	if (!ap || !modif)
@@ -66,5 +67,6 @@ int print_rot(modifier_t *modif, va_list ap)
 		_putchar(s[i]);
 		count++;
 	}
+	free(s);
 	return (count);
 }
