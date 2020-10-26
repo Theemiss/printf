@@ -48,6 +48,9 @@ char *get_length(const char *, unsigned int *);
 char get_specifier(const char *, unsigned int *);
 modifier_t *get_modifier(const char *, unsigned int *);
 int _printf(const char *format, ...);
+char *rot13(char *s);
+int _strlen(char *s);
+int print_rot(modifier_t *, va_list ap);
 
 /**
  * struct print - multiple choice print
