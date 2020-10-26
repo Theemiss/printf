@@ -22,25 +22,22 @@ int print_pointer(modifier_t *modif, va_list ap)
 	if (p == 0)
 	{
 		_putchar('0');
-		count++;
+		return (count + 1);
 	}
-	else
+	while (p)
 	{
-		while (p)
-		{
-			aux = p % 16;
-			if (aux > 9)
-				buffer[i++] = (aux % 10) + 'a';
-			else
-				buffer[i++] = aux + '0';
-			p /= 16;
-		}
-		i--;
-		while (i >= 0)
-		{
-			_putchar(buffer[i--]);
-			count++;
-		}
+		aux = p % 16;
+		if (aux > 9)
+			buffer[i++] = (aux % 10) + 'a';
+		else
+			buffer[i++] = aux + '0';
+		p /= 16;
+	}
+	i--;
+	while (i >= 0)
+	{
+		_putchar(buffer[i--]);
+		count++;
 	}
 	return (count);
 }
