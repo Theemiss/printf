@@ -2,86 +2,41 @@
 #include <stdio.h>
 
 /**
- * free_modifier - free struct modifier
- * @modif: pointer to struct modifier to free
  *
  */
-void free_modifier(modifier_t *modif)
+int buffer_print(char buffer[], unsigned int pos)
 {
-	free(modif->flags);
-	free(modif->length);
-	free(modif);
+	write(1, buffer, pos - 1);
+	return (pos);
 }
 
 /**
- * get_modifier - extracts modifiers into a new struct modifier
- * @s: string to extract from
- * @pos: position to start from (will be modifed to
- * the position of last character checked)
+ * buffer_add - adds a string to buffer
+ * @buffer: buffer to fill
+ * @str: str to add
+ * @buffer_pos: pointer to buffer first empty position
  *
- * Return: pointer on new struct modifier or NULL if specifier not found
+ * Return: if buffer filled and emptyed return number of printed char
+ * else 0
  */
-modifier_t *get_modifier(const char *s, unsigned int *pos)
+int buffer_add(char buffer[], char *str, unsigned int *buffer_pos)
 {
-	modifier_t *modif;
-	unsigned int i = *pos;
+	int length, i, size = BUFFER_SIZE - 1;
+	unsigned int count = 0, pos = *buffer_pos;
 
-	if (s[i + 1] == '\0')
-		return (NULL);
-	modif = malloc(sizeof(modifier_t));
-	if (modif == NULL)
-		return (NULL);
-	modif->flags = get_flags(s, &i);
-	modif->width = get_width(s, &i);
-	modif->precision = get_precision(s, &i);
-	modif->length = get_length(s, &i);
-	modif->specifier = get_specifier(s, &i);
-
-	if (!modif->specifier)
+	for (length = 0; str[length]; length++)
+		;
+	while (str[i])
 	{
-		free_modifier(modif);
-		return (NULL);
+		if (pos == size + 1)
+		{
+			count += buffer_print(buffer, pos);
+			pos = 0;
+		}
+		buffer[pos++] = str[i++];
 	}
-	/**
-	 * printf("flag: %s | width: %d | prec: %d | length: %s | spec: %c |
-	 * \n", modif->flags, modif->width, modif->precision
-	 * , modif->length, modif->specifier);
-	 */
-	(*pos) = i;
-	return (modif);
-}
-
-/**
- * get_print_func - gets the apropriate printing function
- * for a given format-specifier
- * @c: format-specifier
- *
- * Return: pointer to a function or NULL if not found
- */
-int (*get_print_func(char c))(modifier_t *, va_list)
-{
-	int i;
-	t_print t[] = {
-	    {'c', print_char},
-	    {'s', print_string},
-	    {'i', print_int},
-	    {'d', print_int},
-	    {'u', print_unsigned_int},
-	    {'o', print_octal},
-	    {'x', print_hex},
-	    {'X', print_hex},
-	    {'b', print_binary},
-	    {'S', print_big_s},
-	    {'p', print_pointer},
-	    {'r', print_rev},
-	    {'R', print_rot},
-	    {'\0', NULL}};
-	for (i = 0; t[i].f; i++)
-	{
-		if (t[i].f == c)
-			return (t[i].func);
-	}
-	return (NULL);
+	*buffer_pos = pos;
+	return (count);
 }
 
 /**
@@ -94,64 +49,30 @@ int (*get_print_func(char c))(modifier_t *, va_list)
 int _printf(const char *format, ...)
 {
 	va_list ap;
-	int (*fun_p)(modifier_t *, va_list);
-	modifier_t *modif;
-	unsigned int i = 0, printed, end_pos, count = 0;
+	unsigned int i = 0, buffer_pos = 0, count = 0;
+	char *res_str , *aux, buffer[BUFFER_SIZE];
 
 	if (!format || !format[0])
-	{
 		return (-1);
-	}
 	va_start(ap, format);
+	aux = malloc(sizeof(char) * 2);
 	while (format && format[i])
 	{
 		if (format[i] == '%')
 		{
-			if (format[i + 1] == '%')
-			{
-				i += 2;
-				_putchar(format[i - 1]);
-				count++;
-			}
-			else if (format[i + 1] == '\0')
-			{
-				_putchar(format[i++]);
-				count++;
-			}
-			else
-			{
-				end_pos = i;
-				modif = get_modifier(format, &end_pos);
-				if (modif == NULL)
-				{
-					_putchar(format[i++]);
-					count++;
-				}
-				else
-				{
-					fun_p = get_print_func(modif->specifier);
-					if (fun_p != NULL)
-					{
-						printed = fun_p(modif, ap);
-						free(modif);
-						count += printed;
-						i = end_pos + 1;
-					}
-					else
-					{
-						_putchar(format[i++]);
-						free(modif);
-						count++;
-					}
-				}
-			}
+			res_str = treat_format(format, &i, ap);
+			count += buffer_add(buffer, res_str, &buffer_pos);
 		}
 		else
 		{
-			_putchar(format[i++]);
-			count++;
+			aux[0] = format[i];
+			aux[1] = '\0';
+			count += buffer_add(buffer, aux, &buffer_pos)
+			
 		}
 	}
+	count += buffer_print(buffer, buffer_pos)
+	free(aux);
 	va_end(ap);
 	return (count);
 }
