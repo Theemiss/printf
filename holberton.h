@@ -38,6 +38,8 @@ int print_string(modifier_t *modif, va_list ap);
 int print_rev(modifier_t *, va_list ap);
 int print_big_s(modifier_t *, va_list);
 int print_pointer(modifier_t *, va_list);
+int _strlen(char *s);
+
 /**
  *
  */

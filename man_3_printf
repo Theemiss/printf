@@ -1,0 +1,26 @@
+
+.TH _PRINTF 3 "26 october 2020" "0.50" "_PRINTF man page"
+.SH NAME
+.B _printf
+- Formated and print data
+.SH SYNOPSIS
+.B #include "holberton.h"
+
+.B int _printf(const char *
+.I format
+.B , ...)
+.SH DESCRIPTION
+print according to 
+.I format 
+into  standard output
+
+.SH format
+.B c 
+int argument converted to char then printing 
+.SH SEE ALSO
+sdfsdfdqsq
+.SH BUGS
+No known bugs.
+.SH AUTHOR
+Ahmed Belhaj, Wael Ben Hassen
+
