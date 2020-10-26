@@ -74,6 +74,7 @@ int (*get_print_func(char c))(modifier_t *, va_list)
 	    {'S', print_big_s},
 	    {'p', print_pointer},
 	    {'r', print_rev},
+	    {'R', print_rot},
 	    {'\0', NULL}};
 	for (i = 0; t[i].f; i++)
 	{
