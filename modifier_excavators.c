@@ -1,4 +1,5 @@
 #include <stdlib.h>
+#include "holberton.h"
 
 /**
  * get_flags - extract flags after % into a string
@@ -8,7 +9,7 @@
  *
  * Return: string containing all the flags found
  */
-char *get_flags(char *s, unsigned int *pos)
+char *get_flags(const char *s, unsigned int *pos)
 {
 	char *flags_arr = "-+ 0#";
 	char *res_flags = NULL;
@@ -23,7 +24,7 @@ char *get_flags(char *s, unsigned int *pos)
 			if (s[(*pos) + 1] == flags_arr[i])
 			{
 				size += sizeof(char);
-				res_flags = realloc(res_flags, size);
+				res_flags = _realloc(res_flags, size - sizeof(char), size);
 				if (res_flags == NULL)
 				{
 					free(res_flags);
@@ -49,7 +50,7 @@ char *get_flags(char *s, unsigned int *pos)
  *
  * Return: width integer or 0 for * or -1 if not found
  */
-int get_width(char *s, unsigned int *pos)
+int get_width(const char *s, unsigned int *pos)
 {
 	int res_width = -1, found;
 
@@ -86,7 +87,7 @@ int get_width(char *s, unsigned int *pos)
  *
  * Return: precision integer or -1 for '.*' or -2 if not found
  */
-int get_precision(char *s, unsigned int *pos)
+int get_precision(const char *s, unsigned int *pos)
 {
 	int res_prec = 0, found;
 
@@ -124,7 +125,7 @@ int get_precision(char *s, unsigned int *pos)
  *
  * Return: string of 'l's and 'h's or NULL if not found
  */
-char *get_length(char *s, unsigned int *pos)
+char *get_length(const char *s, unsigned int *pos)
 {
 	char *length_arr = "hl";
 	char *res_length = NULL;
@@ -139,7 +140,7 @@ char *get_length(char *s, unsigned int *pos)
 			if (s[(*pos) + 1] == length_arr[i])
 			{
 				size += sizeof(char);
-				res_length = realloc(res_length, size);
+				res_length = _realloc(res_length, size - sizeof(char), size);
 				if (res_length == NULL)
 				{
 					free(res_length);
@@ -166,7 +167,7 @@ char *get_length(char *s, unsigned int *pos)
  *
  * Return: specifier char or NULL if not found
  */
-char get_specifier(char *s, unsigned int *pos)
+char get_specifier(const char *s, unsigned int *pos)
 {
 	char *spec_arr = "cs%dibuoxXSprR";
 	int i;
