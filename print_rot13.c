@@ -1,8 +1,9 @@
 #include "holberton.h"
 /**
- * rot13 - convert string to rot13
- * @s: string to be converted
- * Return:string in rot13
+ * 
+ * 
+ * 
+ * 
  */
 char *rot13(char *s)
 {
@@ -25,15 +26,14 @@ char *rot13(char *s)
 }
 /**
  * print_rot - encodes a string into rot13
- * @ap: arg to display handle %
- * @modif :struct modifier containig modifier fields
+ * @ap: arg to display handle %R
  * Return: count of string
  */
 int print_rot(modifier_t *modif, va_list ap)
 {	char *str, *s;
 	unsigned int count = 0, i;
 
-	if (!ap || !modif)
+if (!ap || !modif)
 		return (0);
 
 	str = va_arg(ap, char *);
@@ -43,5 +43,5 @@ int print_rot(modifier_t *modif, va_list ap)
 		_putchar(s[i]);
 		count++;
 	}
-	return (count);
+return (count);
 }
