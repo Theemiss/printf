@@ -42,7 +42,11 @@ modifier_t *get_modifier(const char *s, unsigned int *pos)
 		free_modifier(modif);
 		return (NULL);
 	}
-	//printf("flag: %s | width: %d | prec: %d | length: %s | spec: %c |\n", modif->flags, modif->width, modif->precision, modif->length, modif->specifier);
+	/**
+	 * printf("flag: %s | width: %d | prec: %d | length: %s | spec: %c |
+	 * \n", modif->flags, modif->width, modif->precision
+	 * , modif->length, modif->specifier);
+	 */
 	(*pos) = i;
 	return (modif);
 }
@@ -69,6 +73,7 @@ int (*get_print_func(char c))(modifier_t *, va_list)
 		{'X', print_hex},
 		{'b', print_binary},
 		{'S', print_big_s},
+		{'p', print_pointer},
 		{'\0', NULL}
 	};
 
@@ -92,7 +97,7 @@ int _printf(const char *format, ...)
 	va_list ap;
 	int (*fun_p)(modifier_t *, va_list);
 	modifier_t *modif;
-	unsigned int i, printed, count = 0;
+	unsigned int i = 0, printed, end_pos, count = 0;
 
 	if (!format || !format[0] )
 	{
@@ -103,21 +108,27 @@ int _printf(const char *format, ...)
 	{
 		if (format[i] == '%')
 		{
-			modif = get_modifier(format, &i);
+			end_pos = i;
+			modif = get_modifier(format, &end_pos);
 			if (modif == NULL)
 			{
 				_putchar(format[i++]);
 				count++;
 			}
-			/**
-			 * ToDo: when get_modifier() fails to allocate;
-			 */
 			else
 			{
 				fun_p = get_print_func(modif->specifier);
-				printed = fun_p(modif, ap);
-				count += printed;
-				i++;
+				if (fun_p != NULL)
+				{
+					printed = fun_p(modif, ap);
+					count += printed;
+					i = end_pos + 1;
+				}
+				else
+				{
+					_putchar(format[i++]);
+					count++;
+				}
 			}
 		}
 		else
