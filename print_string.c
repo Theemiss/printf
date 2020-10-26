@@ -7,18 +7,16 @@
  *
  * Return: string lenght
  */
-int print_string(modifier_t *modif, va_list ap)
+char *print_string(modifier_t *modif, va_list ap)
 {
 	char *str;
-	unsigned int count = 0, i;
 
 	if (!ap || !modif)
 		return (0);
 	str = va_arg(ap, char *);
-	for (i = 0; str[i]; i++)
+	if (str == NULL)
 	{
-		_putchar(str[i]);
-		count++;
+		str = "(null)";
 	}
-	return (count);
+	return (str);
 }
