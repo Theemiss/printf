@@ -2,13 +2,14 @@
 /**
  * print_int - print integer
  * @ap:va_list pointer for integer handle %i
+ * @modif:struct modifier containig modifier fields
  * Return:int length
  */
 int print_int(modifier_t *modif, va_list ap)
 {
 	int long x, count = 0, aux, num = 1;
-	unsigned int long div = 1 ;
-	
+	unsigned int long div = 1;
+
 	if (!ap || !modif)
 		return (0);
 
@@ -20,10 +21,10 @@ int print_int(modifier_t *modif, va_list ap)
 		count++;
 	}
 	else
-		num = x ;
-	
-	aux = num / 10 ;
-while (aux != 0)
+		num = x;
+
+	aux = num / 10;
+	while (aux != 0)
 	{
 		aux /= 10;
 		div *= 10;
@@ -41,5 +42,3 @@ while (aux != 0)
 	count++;
 	return (count);
 }
-// tested working//
-// no betty style yet //
