@@ -5,7 +5,7 @@
  * @modif: struct modifier containig modifier fields
  * Return: one char count
  */
-char print_char (modifier_t *modif, va_list ap)
+int print_char (modifier_t *modif, va_list ap)
 {
 	char ch;
 
@@ -13,6 +13,7 @@ char print_char (modifier_t *modif, va_list ap)
 		return (0);
 
 	ch = (char)va_arg(ap, int);
+	_putchar(ch);
 
-	return (ch);
+	return (1);
 }
