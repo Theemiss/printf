@@ -11,7 +11,7 @@
 int print_binary(modifier_t *modif, va_list ap)
 {
 	unsigned int count = 0, n;
-	int i = 0;
+	int i = -1;
 	char binary[32];
 
 	if (!ap || !modif || modif->specifier != 'b')
@@ -19,7 +19,8 @@ int print_binary(modifier_t *modif, va_list ap)
 	n = va_arg(ap, unsigned int);
 	while (n)
 	{
-		binary[i++] = '0' + (n % 2);
+		i++;
+		binary[i] = '0' + (n % 2);
 		n = n / 2;
 	}
 	while (i >= 0)
