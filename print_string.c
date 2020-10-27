@@ -1,5 +1,20 @@
 #include"holberton.h"
+/**
+ * 
+ * 
+ */
+char *_strcpy(char *dest, char *src)
+{
+	int i = 0;
 
+	while (src[i])
+	{
+		dest[i] = src[i];
+		i++;
+	}
+	dest[i] = '\0';
+	return (dest);
+}
 /**
  * print_string - print a string
  * @modif: struct containing modifier fields
@@ -7,18 +22,27 @@
  *
  * Return: string lenght
  */
-int print_string(modifier_t *modif, va_list ap)
+char *print_string(modifier_t *modif, va_list ap)
 {
 	char *str;
-	unsigned int count = 0, i;
-
+	char *res;
 	if (!ap || !modif)
 		return (0);
 	str = va_arg(ap, char *);
-	for (i = 0; str[i]; i++)
+
+	if (str)
 	{
-		_putchar(str[i]);
-		count++;
+		res = malloc(_strlen(str) + 1);
+		if (!res)
+			return (NULL);
+		res = _strcpy(res, str);
 	}
-	return (count);
+	else
+	{
+		res = malloc(6 + 1);
+		if (!res)
+			return (NULL);
+		res = _strcpy(res, "(null)");
+	}
+	return (res);
 }
