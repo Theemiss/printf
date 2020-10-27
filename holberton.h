@@ -33,7 +33,7 @@ int print_hex(modifier_t *, va_list);
 int print_char(modifier_t *, va_list ap);
 int print_int(modifier_t *, va_list ap);
 int print_decimal(modifier_t *, va_list ap);
-int print_string(modifier_t *modif, va_list ap);
+char *print_string(modifier_t *modif, va_list ap);
 int print_rev(modifier_t *, va_list ap);
 int print_big_s(modifier_t *, va_list);
 int print_pointer(modifier_t *, va_list);
@@ -50,6 +50,7 @@ modifier_t *get_modifier(const char *, unsigned int *);
 int _printf(const char *format, ...);
 char *rot13(char *s);
 int _strlen(char *s);
+char *_strcpy(char *dest, char *src);
 int print_rot(modifier_t *, va_list ap);
 
 /**
