@@ -62,7 +62,7 @@ char *print_hex(modifier_t *modif, va_list ap)
 		while (i >= 0)
 		{
 			res_str[j++] = buffer[i--];
-		}		
+			
 	}
 	res_str[j] = '\0';
 	return (res_str);
