@@ -54,12 +54,19 @@ char *rot13(char *str)
  */
 char *print_rot(modifier_t *modif, va_list ap)
 {
-		char *str, *r , *res;
+		char *str, *res;
 	if (!ap || !modif)
 		return (0); 
 	str = va_arg(ap, char *);
-	if (!str)
+	if (str == NULL)
+	{
+		res = malloc(sizeof(char) * 7);
+		res = _strcpy(res, "(null)");
+		return (res);
+	}
+	if (str[0] == '\0')
 		return (NULL);
-	else
-		return (res =rot13(str));
+	malloc (sizeof(char)* _strlen(str));
+	res =rot13(str);
+	return (res);
 }
