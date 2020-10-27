@@ -35,7 +35,7 @@ char *print_char(modifier_t *, va_list ap);
 int print_int(modifier_t *, va_list ap);
 int print_decimal(modifier_t *, va_list ap);
 char *print_string(modifier_t *modif, va_list ap);
-int print_rev(modifier_t *, va_list ap);
+char *print_rev(modifier_t *, va_list ap);
 int print_big_s(modifier_t *, va_list);
 int print_pointer(modifier_t *, va_list);
 char *rot13(char *s);
@@ -57,8 +57,8 @@ char *_strcpy(char *dest, char *src);
 
 /**
  * struct print - multiple choice print
- * @x: char Type of print
- * @T_func: funct
+ * @f: char Type of print
+ * @func: funct
  */
 typedef struct print
 {
