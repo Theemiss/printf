@@ -10,7 +10,7 @@ char *print_rev(modifier_t *modif, va_list ap)
 	int i;
 	int length;
 	char *str, *ret;
-	
+
 	if (!ap || !modif)
 		return (0);
 	str = va_arg(ap, char *);
