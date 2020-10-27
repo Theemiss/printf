@@ -29,20 +29,12 @@ char *print_string(modifier_t *modif, va_list ap)
 	if (!ap || !modif)
 		return (0);
 	str = va_arg(ap, char *);
+	if (!str)
+		return (NULL);
+	res = malloc(_strlen(str) + 1);
+	if (!res)
+		return (NULL);
+	res = _strcpy(res, str);
 
-	if (str)
-	{
-		res = malloc(_strlen(str) + 1);
-		if (!res)
-			return (NULL);
-		res = _strcpy(res, str);
-	}
-	else
-	{
-		res = malloc(6 + 1);
-		if (!res)
-			return (NULL);
-		res = _strcpy(res, "(null)");
-	}
 	return (res);
 }
