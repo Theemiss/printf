@@ -28,6 +28,7 @@ char *print_string(modifier_t *modif, va_list ap)
 {
 	char *str;
 	char *res;
+	
 	if (!ap || !modif)
 		return (0);
 	str = va_arg(ap, char *);
