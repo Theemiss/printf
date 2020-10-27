@@ -55,6 +55,7 @@ char *_strcpy(char *dest, char *src);
 void array_rev(char *arr, int len);
 int int_len(int num);
 char *ito(int n);
+char *reverse (char *s);
 
 
 /**

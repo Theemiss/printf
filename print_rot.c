@@ -54,7 +54,7 @@ char *rot13(char *str)
  */
 char *print_rot(modifier_t *modif, va_list ap)
 {
-		char *str, *res;
+	char *str, *res;
 	if (!ap || !modif)
 		return (0);
 	str = va_arg(ap, char *);
