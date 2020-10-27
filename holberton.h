@@ -32,8 +32,7 @@ char *print_unsigned_int(modifier_t *, va_list);
 char *print_octal(modifier_t *, va_list);
 char *print_hex(modifier_t *, va_list);
 char *print_char(modifier_t *, va_list ap);
-int print_int(modifier_t *, va_list ap);
-int print_decimal(modifier_t *, va_list ap);
+char *print_int(modifier_t *, va_list ap);
 char *print_string(modifier_t *modif, va_list ap);
 char *print_rev(modifier_t *, va_list ap);
 char *print_big_s(modifier_t *, va_list);
@@ -54,6 +53,10 @@ modifier_t *get_modifier(const char *, unsigned int *);
 char *treat_format(const char *, unsigned int *, va_list);
 int _printf(const char *format, ...);
 char *_strcpy(char *dest, char *src);
+void array_rev(char *arr, int len);
+int int_len(int num);
+char *ito( int n);
+
 
 /**
  * struct print - multiple choice print
