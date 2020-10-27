@@ -52,21 +52,21 @@ char *rot13(char *str)
 * @modif:struct modifier containig modifier fields
  * Return: count of string
  */
-int print_rot(modifier_t *modif, va_list ap)
+char *print_rot(modifier_t *modif, va_list ap)
 {
-	char *str, *s;
-	unsigned int count = 0, i;
-
-	str = va_arg(ap, char *);
+	char *str, *res;
 	if (!ap || !modif)
-		return (0);
-
-	s = rot13(str);
-	for (i = 0; s[i]; i++)
+		return (0); 
+	str = va_arg(ap, char *);
+	if (str == NULL)
 	{
-		_putchar(s[i]);
-		count++;
+		res = malloc(sizeof(char) * 7);
+		res = _strcpy(res, "(null)");
+		return (res);
 	}
-	free(s);
-	return (count);
+	if (str[0] == '\0')
+		return (NULL);
+	malloc (sizeof(char)* _strlen(str));
+	res =rot13(str);
+	return (res);
 }
