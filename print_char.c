@@ -8,12 +8,24 @@
 char *print_char (modifier_t *modif, va_list ap)
 {
 	char *ch;
+	char c;
 
 	if (!ap || !modif)
 		return (0);
-	ch = malloc(sizeof(char) * 2);
-	ch[0] = va_arg(ap, int);
+	c =va_arg(ap, int);
+	ch = malloc(2);
+	if (!ch)
+	{
+		return(NULL);
+	}
+	if (c)
+	{
+		ch[0] = c;
+	}
+	else
+	{
+		ch[0] = '\0';
+	}
 	ch[1] = '\0';
-
 	return (ch);
 }
