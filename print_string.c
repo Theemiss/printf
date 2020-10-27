@@ -29,7 +29,13 @@ char *print_string(modifier_t *modif, va_list ap)
 	if (!ap || !modif)
 		return (0);
 	str = va_arg(ap, char *);
-	if (!str)
+	if (str == NULL)
+	{
+		res = malloc(sizeof(char) * 7);
+		res = _strcpy(res, "(null)");
+		return (res);
+	}
+	if (str[0] == '\0')
 		return (NULL);
 	res = malloc(_strlen(str) + 1);
 	if (!res)
