@@ -4,22 +4,25 @@
  * ctox - print charachter as hexadecimal
  * @c: charachter to print
  *
+ * Return: hex of char
  */
-void ctox(char c)
+char *ctox(char c)
 {
-	char buffer;
+	char *buffer;
 
-	buffer = c % 16;
+	buffer = malloc(sizeof(char) * 2);
+	buffer[1] = c % 16;
 	c /= 16;
 	c %= 16;
 	if (c > 9)
-		_putchar((c % 10) + 'A');
+		buffer[0] = (c % 10) + 'A';
 	else
-		_putchar(c + '0');
-	if (buffer > 9)
-		_putchar((buffer % 10) + 'A');
+		buffer[0] = c + '0';
+	if (buffer[1] > 9)
+		buffer[1] = (buffer[1] % 10) + 'A';
 	else
-		_putchar(buffer + '0');
+		buffer[1] = buffer[1] + '0';
+	return (buffer);
 }
 
 /**
@@ -29,30 +32,35 @@ void ctox(char c)
  *
  * Return: string lenght
  */
-int print_big_s(modifier_t *modif, va_list ap)
+char *print_big_s(modifier_t *modif, va_list ap)
 {
-	char *str;
-	unsigned int count = 0, i, c;
+	char *str, *res_str, *aux;
+	unsigned int j = 0, i, c;
 
 	if (!ap || !modif || modif->specifier != 'S')
-		return (0);
+		return (NULL);
 
 	str = va_arg(ap, char *);
+	res_str = malloc(sizeof(char));
 	for (i = 0; str[i]; i++)
 	{
 		c = str[i];
 		if ((c > 0 && c < 32) || c >= 127)
 		{
-			_putchar(92);
-			_putchar('x');
-			ctox(c);
-			count += 4;
+			res_str = _realloc(res_str, j + 1, j + 5); 
+			res_str[j++] = 92;
+			res_str[j++] = 'x';
+			aux = ctox(c);
+			res_str[j++] = aux[0];
+			res_str[j++] = aux[1];
+			free(aux);
 		}
 		else
 		{
-			_putchar(str[i]);
-			count++;
+			res_str = _realloc(res_str, j + 1, j + 2);
+			res_str[j++] = str[i];
 		}
 	}
-	return (count);
+	res_str[j] = '\0';
+	return (res_str);
 }

@@ -68,9 +68,8 @@ char *(*get_print_func(char c))(modifier_t *, va_list)
 	    {'x', print_hex},
 	    {'X', print_hex},
 	    {'b', print_binary},
-	    /**
-	    *{'S', print_big_s},
-	    *{'p', print_pointer},*/
+	    {'S', print_big_s},
+	    {'p', print_pointer},
 	    {'r', print_rev},
 	    /**{'R', print_rot},
 	    */

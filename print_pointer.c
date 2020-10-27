@@ -7,37 +7,40 @@
  *
  * Return: number of printed characters
  */
-int print_pointer(modifier_t *modif, va_list ap)
+char *print_pointer(modifier_t *modif, va_list ap)
 {
 	long int p, aux;
-	char buffer[1024];
-	int i = 0, count = 0;
+	char buffer[1024], *res_str;
+	int i = 0, j = 0;
 
 	if (!modif || !ap || modif->specifier != 'p')
-		return (0);
+		return (NULL);
 	p = va_arg(ap, long int);
-	_putchar('0');
-	_putchar('x');
-	count += 2;
 	if (p == 0)
 	{
-		_putchar('0');
-		return (count + 1);
+		res_str = malloc(sizeof(char) * 4);
+		res_str[j++] = '0';
+		res_str[j++] = 'x';
+		res_str[j++] = '0';
 	}
-	while (p)
+	else
 	{
-		aux = p % 16;
-		if (aux > 9)
-			buffer[i++] = (aux % 10) + 'a';
-		else
-			buffer[i++] = aux + '0';
-		p /= 16;
+		while (p)
+		{
+			aux = p % 16;
+			if (aux > 9)
+				buffer[i++] = (aux % 10) + 'a';
+			else
+				buffer[i++] = aux + '0';
+			p /= 16;
+		}
+		res_str = malloc(sizeof(char) * (i + 2));
+		res_str[j++] = '0';
+		res_str[j++] = 'x';
+		i--;
+		while (i >= 0)
+			res_str[j++] = buffer[i--];
 	}
-	i--;
-	while (i >= 0)
-	{
-		_putchar(buffer[i--]);
-		count++;
-	}
-	return (count);
+	res_str[j] = '\0';
+	return (res_str);
 }

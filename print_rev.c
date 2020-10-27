@@ -1,4 +1,5 @@
 #include "holberton.h"
+#include <stdio.h>
 /**
  * print_rev - print a string in reverse
  * @ap:handle %r
@@ -9,12 +10,15 @@ char *print_rev(modifier_t *modif, va_list ap)
 {
 	int i;
 	int length;
-	char *str, *ret;
+	char *str = NULL, *ret;
 
 	if (!ap || !modif)
 		return (0);
 	str = va_arg(ap, char *);
-	length = _strlen(str);
+	printf("str = %s\n", str);
+	//length = _strlen(str);
+	for (length = 0; str[length]; i++)
+		;
 	ret = malloc(length + 1);
 	if (!ret)
 		return (NULL);
