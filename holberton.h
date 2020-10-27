@@ -40,7 +40,7 @@ char *print_big_s(modifier_t *, va_list);
 char *print_pointer(modifier_t *, va_list);
 char *rot13(char *s);
 int _strlen(char *s);
-int print_rot(modifier_t *, va_list ap);
+char *print_rot(modifier_t *, va_list ap);
 
 void free_modifier(modifier_t *);
 char *get_flags(const char *, unsigned int *);
