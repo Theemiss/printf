@@ -55,10 +55,13 @@ char *print_int(modifier_t *modif, va_list ap)
 
 	if (!ap || !modif)
 		return (0);
-	number = va_arg(ap, int);
+	number = va_arg(ap, int);	
+	if (number < 0)
+	{
+		number *= -1;
+	}	
 	str =  ito(number);
 	res = malloc(sizeof(char)*_strlen(str) + 1);
-	res = _strcpy(res, str);
-
+	res = _strcpy(res, str);	
 	return (res);
 }
