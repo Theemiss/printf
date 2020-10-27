@@ -57,8 +57,8 @@ char *_strcpy(char *dest, char *src);
 
 /**
  * struct print - multiple choice print
- * @x: char Type of print
- * @T_func: funct
+ * @f: char Type of print
+ * @func: funct
  */
 typedef struct print
 {

@@ -12,11 +12,11 @@ char *print_char (modifier_t *modif, va_list ap)
 
 	if (!ap || !modif)
 		return (0);
-	c =va_arg(ap, int);
+	c = va_arg(ap, int);
 	ch = malloc(2);
 	if (!ch)
 	{
-		return(NULL);
+		return (NULL);
 	}
 	if (c)
 	{
