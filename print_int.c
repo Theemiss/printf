@@ -5,40 +5,33 @@
  * @modif:struct modifier containig modifier fields
  * Return:int length
  */
-int print_int(modifier_t *modif, va_list ap)
+char *print_int(modifier_t *modif, va_list ap)
 {
-	int long x, count = 0, aux, num = 1;
-	unsigned int long div = 1;
+	unsigned int n;
+	int i = 0, j = 0;
+	char buf[10], *str;
 
-	if (!ap || !modif)
-		return (0);
-
-	x = va_arg(ap, int);
-	if (x < 0)
+	if (!ap || !modif )
+		return (NULL);
+	n = va_arg(ap, int);
+	if (n == 0)
 	{
-		_putchar('-');
-		num = -x;
-		count++;
+		j = 1;
+		str = malloc(sizeof(char) * 2);
+		str[0] = '0';
 	}
 	else
-		num = x;
-
-	aux = num / 10;
-	while (aux != 0)
 	{
-		aux /= 10;
-		div *= 10;
+		while (n)
+		{
+			buf[i++] = (n % 10) + '0';
+			n = n / 10;
+		}
+		str = malloc(sizeof(char) * i);
+		i--;
+		while (i >= 0)
+			str[j++] = buf[i--];
 	}
-
-	while (div != 1)
-	{
-		_putchar((num / div) + '0');
-		count++;
-		num %= div;
-		div /= 10;
-	}
-
-	_putchar(num + '0');
-	count++;
-	return (count);
+	str[j] = '\0';
+	return (str);
 }
