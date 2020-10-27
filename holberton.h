@@ -53,6 +53,7 @@ char get_specifier(const char *, unsigned int *);
 modifier_t *get_modifier(const char *, unsigned int *);
 char *treat_format(const char *, unsigned int *, va_list);
 int _printf(const char *format, ...);
+char *_strcpy(char *dest, char *src);
 
 /**
  * struct print - multiple choice print
