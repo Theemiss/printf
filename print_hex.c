@@ -64,6 +64,5 @@ char *print_hex(modifier_t *modif, va_list ap)
 		
 	}
 	res_str[j] = '\0';
-	return (res_str);
-	
+	return (res_str);	
 }
