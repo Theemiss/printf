@@ -5,6 +5,7 @@
 #include <stddef.h>
 
 #define BUFFER_SIZE 1024
+
 /**
  * struct modifier - mofifier fields collection
  * @flags: flags field composed of ['0', ' ', '#', '+', '-']
@@ -41,9 +42,7 @@ char *rot13(char *s);
 int _strlen(char *s);
 int print_rot(modifier_t *, va_list ap);
 
-/**
- *
- */
+void free_modifier(modifier_t *);
 char *get_flags(const char *, unsigned int *);
 int get_width(const char *, unsigned int *);
 int get_precision(const char *, unsigned int *);
@@ -55,7 +54,7 @@ int _printf(const char *format, ...);
 char *_strcpy(char *dest, char *src);
 void array_rev(char *arr, int len);
 int int_len(int num);
-char *ito( int n);
+char *ito(int n);
 
 
 /**
@@ -69,7 +68,4 @@ typedef struct print
 	char *(*func)(modifier_t *, va_list);
 } t_print;
 
-/**
- *
- */
 #endif

@@ -47,7 +47,7 @@ char *print_big_s(modifier_t *modif, va_list ap)
 		c = str[i];
 		if ((c > 0 && c < 32) || c >= 127)
 		{
-			res_str = _realloc(res_str, j + 1, j + 5); 
+			res_str = _realloc(res_str, j + 1, j + 5);
 			res_str[j++] = 92;
 			res_str[j++] = 'x';
 			aux = ctox(c);
