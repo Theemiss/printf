@@ -50,18 +50,48 @@ char *ito( int n)
  */
 char *print_int(modifier_t *modif, va_list ap)
 {
-	int number;
-	char *res, *str;
+		 int n;
+	int i, j = 0;
+	char buffer[10], *res_str;
 
-	if (!ap || !modif)
-		return (0);
-	number = va_arg(ap, int);	
-	if (number < 0)
+	if (!ap && !modif )
+		return (NULL);
+	n = va_arg(ap, unsigned int);
+	if (n == 0)
 	{
-		number *= -1;
-	}	
-	str =  ito(number);
-	res = malloc(sizeof(char)*_strlen(str) + 1);
-	res = _strcpy(res, str);	
-	return (res);
+		j = 1;
+		res_str = malloc(sizeof(char) * 2);
+		res_str[0] = '0';
+	}
+	else if (n < 0)
+	{
+		i = 1;
+		n *= -1;
+			while (n)
+		{
+			buffer[i++] = (n % 10) + '0';
+			n = n / 10;
+		}
+		res_str = malloc(sizeof(char) * i);
+		i--;
+		res_str[0] = '-';
+		j = 1;
+		while (i >= 0)
+			res_str[j++] = buffer[i--];
+	}
+	else
+	{
+		i = 0;
+		while (n)
+		{
+			buffer[i++] = (n % 10) + '0';
+			n = n / 10;
+		}
+		res_str = malloc(sizeof(char) * i);
+		i--;
+		while (i >= 0)
+			res_str[j++] = buffer[i--];
+	}
+	res_str[j] = '\0';
+	return (res_str);
 }
