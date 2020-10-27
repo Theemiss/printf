@@ -4,6 +4,7 @@
 #include <stdlib.h>
 #include <stddef.h>
 
+#define BUFFER_SIZE 1024
 /**
  * struct modifier - mofifier fields collection
  * @flags: flags field composed of ['0', ' ', '#', '+', '-']
@@ -30,13 +31,16 @@ int print_binary(modifier_t *, va_list);
 int print_unsigned_int(modifier_t *, va_list);
 int print_octal(modifier_t *, va_list);
 int print_hex(modifier_t *, va_list);
-char print_char(modifier_t *, va_list ap);
+char *print_char(modifier_t *, va_list ap);
 int print_int(modifier_t *, va_list ap);
 int print_decimal(modifier_t *, va_list ap);
 char *print_string(modifier_t *modif, va_list ap);
 int print_rev(modifier_t *, va_list ap);
 int print_big_s(modifier_t *, va_list);
 int print_pointer(modifier_t *, va_list);
+char *rot13(char *s);
+int _strlen(char *s);
+int print_rot(modifier_t *, va_list ap);
 
 /**
  *
@@ -47,10 +51,8 @@ int get_precision(const char *, unsigned int *);
 char *get_length(const char *, unsigned int *);
 char get_specifier(const char *, unsigned int *);
 modifier_t *get_modifier(const char *, unsigned int *);
+char *treat_format(const char *, unsigned int *, va_list);
 int _printf(const char *format, ...);
-char *rot13(char *s);
-int _strlen(char *s);
-int print_rot(modifier_t *, va_list ap);
 
 /**
  * struct print - multiple choice print
@@ -60,7 +62,7 @@ int print_rot(modifier_t *, va_list ap);
 typedef struct print
 {
 	char f;
-	int (*func)(modifier_t *, va_list);
+	char *(*func)(modifier_t *, va_list);
 } t_print;
 
 /**

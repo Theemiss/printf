@@ -58,13 +58,13 @@ modifier_t *get_modifier(const char *s, unsigned int *pos)
  *
  * Return: pointer to a function or NULL if not found
  */
-int (*get_print_func(char c))(modifier_t *, va_list)
+char *(*get_print_func(char c))(modifier_t *, va_list)
 {
 	int i;
 	t_print t[] = {
 	    {'c', print_char},
 	    {'s', print_string},
-	    {'i', print_int},
+	   /** {'i', print_int},
 	    {'d', print_int},
 	    {'u', print_unsigned_int},
 	    {'o', print_octal},
@@ -74,7 +74,7 @@ int (*get_print_func(char c))(modifier_t *, va_list)
 	    {'S', print_big_s},
 	    {'p', print_pointer},
 	    {'r', print_rev},
-	    {'R', print_rot},
+	    {'R', print_rot},*/
 	    {'\0', NULL}};
 	for (i = 0; t[i].f; i++)
 	{
@@ -94,17 +94,20 @@ int (*get_print_func(char c))(modifier_t *, va_list)
  */
 char *treat_format(const char *format, unsigned int *pos, va_list ap)
 {
-	int (*fun_p)(modifier_t *, va_list);
+	char *(*fun_p)(modifier_t *, va_list);
 	modifier_t *modif;
-	unsigned int i = 0, end_pos, count;
+	unsigned int end_pos;
 	char *res_str;
 
-	if (!format || !format[pos + 1])
+	if (!format || !format[(*pos) + 1])
+	{
+		(*pos)++;
 		return (NULL);
-	if (format[pos + 1] == '%')
+	}
+	if (format[(*pos) + 1] == '%')
 	{
 		(*pos) += 2;
-		return (NULL);
+		return ("%\0");
 	}
 	end_pos = *pos;
 	modif = get_modifier(format, &end_pos);
@@ -114,6 +117,11 @@ char *treat_format(const char *format, unsigned int *pos, va_list ap)
 		return ("%\0");
 	}
 	fun_p = get_print_func(modif->specifier);
+	if (!fun_p)
+	{
+		(*pos)++;
+		return("%\0");
+	}
 	res_str = fun_p(modif, ap);
 	free(modif);
 	*pos = end_pos + 1;

@@ -1,3 +1,4 @@
+#include <unistd.h>
 #include "holberton.h"
 #include <stdio.h>
 
@@ -6,7 +7,7 @@
  */
 int buffer_print(char buffer[], unsigned int pos)
 {
-	write(1, buffer, pos - 1);
+	write(1, buffer, pos);
 	return (pos);
 }
 
@@ -21,14 +22,12 @@ int buffer_print(char buffer[], unsigned int pos)
  */
 int buffer_add(char buffer[], char *str, unsigned int *buffer_pos)
 {
-	int length, i, size = BUFFER_SIZE - 1;
-	unsigned int count = 0, pos = *buffer_pos;
+	int i = 0;
+	unsigned int count = 0, pos = *buffer_pos, size = BUFFER_SIZE;
 
-	for (length = 0; str[length]; length++)
-		;
-	while (str[i])
+	while (str && str[i])
 	{
-		if (pos == size + 1)
+		if (pos == size)
 		{
 			count += buffer_print(buffer, pos);
 			pos = 0;
@@ -65,14 +64,16 @@ int _printf(const char *format, ...)
 		}
 		else
 		{
-			aux[0] = format[i];
+			aux[0] = format[i++];
 			aux[1] = '\0';
-			count += buffer_add(buffer, aux, &buffer_pos)
+			count += buffer_add(buffer, aux, &buffer_pos);
 			
 		}
 	}
-	count += buffer_print(buffer, buffer_pos)
+	count += buffer_print(buffer, buffer_pos);
 	free(aux);
 	va_end(ap);
+	if (!count)
+		count = -1;
 	return (count);
 }

@@ -14,8 +14,8 @@ int print_rev(modifier_t *modif, va_list ap)
 		return (0);
 
 	str = va_arg(ap, char *);
-	if (str == NULL)
-		str = "(null)";
+	if (!str)
+		return (0);
 	for (i = 0; str[i]; i++)
 		;
 	for (i -= 1; i >= 0; i--)

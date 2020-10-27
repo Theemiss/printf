@@ -5,14 +5,15 @@
  * @modif: struct modifier containig modifier fields
  * Return: one char count
  */
-char print_char (modifier_t *modif, va_list ap)
+char *print_char (modifier_t *modif, va_list ap)
 {
-	char ch;
+	char *ch;
 
 	if (!ap || !modif)
 		return (0);
-
-	ch = (char)va_arg(ap, int);
+	ch = malloc(sizeof(char) * 2);
+	ch[0] = va_arg(ap, int);
+	ch[1] = '\0';
 
 	return (ch);
 }
