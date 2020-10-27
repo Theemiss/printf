@@ -1,6 +1,31 @@
 #include "holberton.h"
 
 /**
+ *
+ */
+void treat_flags(char *flags, char *buffer, int *size)
+{
+	char sign = buffer[(*size) - 1];
+	int i;
+
+	if (flags && sign != '-')
+	{
+		for (i = 0; flags[i]; i++)
+		{
+			if (flags[i] == ' ')
+				buffer[*size] = ' ';
+		}
+		for (i = 0; flags[i]; i++)
+		{
+			if (flags[i] == '+')
+				buffer[*size] = '+';
+		}
+		if (buffer[*size] == '+' || buffer[*size] == ' ')
+			(*size)++;
+	}
+}
+
+/**
  * print_int - print integer
  * @ap:va_list pointer for integer handle %i
  * @modif:struct modifier containig modifier fields
@@ -34,6 +59,7 @@ char *print_int(modifier_t *modif, va_list ap)
 		}
 		if (n < 0)
 			buffer[i++] = '-';
+		treat_flags(modif->flags, buffer, &i);
 		res_str = malloc(sizeof(char) * i);
 		i--;
 		while (i >= 0)

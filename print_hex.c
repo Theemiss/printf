@@ -1,6 +1,22 @@
 #include "holberton.h"
 
 /**
+ *
+ */
+void treat_flags_hex(char *flags, char *buffer, int *size, char _case)
+{
+	int i;
+
+	for (i = 0; flags && flags[i]; i++)
+	{
+		if (flags[i] == '#')
+		{
+			buffer[(*size)++] = _case + 23;
+			buffer[(*size)++] = '0';
+		}
+	}
+}
+/**
  * print_hex - print usigned decimal as hexadecimal
  * @modif: struct modifier containig modifier fields
  * @ap: va_list pointer containig unsigned int to print
@@ -12,7 +28,7 @@ char *print_hex(modifier_t *modif, va_list ap)
 {
 	unsigned int n, aux;
 	int i = 0, j = 0;
-	char buffer[8], _case, *res_str;
+	char buffer[11], _case, *res_str;
 
 	if (!ap || !modif)
 		return (0);
@@ -35,6 +51,7 @@ char *print_hex(modifier_t *modif, va_list ap)
 				buffer[i++] = aux + '0';
 			n = n / 16;
 		}
+		treat_flags_hex(modif->flags, buffer, &i, _case);
 		res_str = malloc(sizeof(char) * i);
 		i--;
 		while (i >= 0)
