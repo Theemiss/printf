@@ -1,6 +1,24 @@
 #include "holberton.h"
 
 /**
+ * treat_flags_o - treat flags
+ * @flags: string of flags
+ * @buffer: to store result
+ * @pos: size of buffer
+ *
+ */
+void treat_flags_o(char *flags, char *buffer, int *pos)
+{
+	int i;
+
+	for (i = 0; flags && flags[i]; i++)
+	{
+		if (flags[i] == '#')
+			buffer[(*pos)++] = '0';
+	}
+}
+
+/**
  * print_octal - print usigned decimal as octal
  * @modif: struct containig modifier fields
  * @ap: va_list pointer containig unsigned int to print
@@ -30,6 +48,7 @@ char *print_octal(modifier_t *modif, va_list ap)
 			buffer[i++] = (n % 8) + '0';
 			n = n / 8;
 		}
+		treat_flags_o(modif->flags, buffer, &i);
 		res_str = malloc(sizeof(char) * i);
 		i--;
 		while (i >= 0)

@@ -1,6 +1,11 @@
 #include "holberton.h"
 
 /**
+ * treat_flags_hex - treat flags
+ * @flags: string of flags
+ * @buffer: to store resulr
+ * @size: size of buffer
+ * @_case: case of characters
  *
  */
 void treat_flags_hex(char *flags, char *buffer, int *size, char _case)

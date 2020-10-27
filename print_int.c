@@ -1,6 +1,10 @@
 #include "holberton.h"
 
 /**
+ * treat_flags - treat flags + and ' '
+ * @flags: flags string
+ * @buffer: to store result
+ * @size: size of buffer
  *
  */
 void treat_flags(char *flags, char *buffer, int *size)
