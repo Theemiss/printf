@@ -16,7 +16,6 @@ char *print_rev(modifier_t *modif, va_list ap)
 		return (0);
 	str = va_arg(ap, char *);
 	printf("str = %s\n", str);
-	//length = _strlen(str);
 	for (length = 0; str[length]; i++)
 		;
 	ret = malloc(length + 1);
