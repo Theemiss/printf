@@ -50,24 +50,14 @@ char *ito( int n)
  */
 char *print_int(modifier_t *modif, va_list ap)
 {
-	char number;
+	int number;
 	char *res, *str;
 
 	if (!ap || !modif)
 		return (0);
 	number = va_arg(ap, int);
 	str =  ito(number);
-	if (str == NULL)
-	{
-		res = malloc(sizeof(char) * 7);
-		res = _strcpy(res, "(null)");
-		return (res);
-	}
-	if (str[0] == '\0')
-		return (NULL);
-	res = malloc(_strlen(str) + 1);
-	if (!res)
-		return (NULL);
+	res = malloc(sizeof(char)*_strlen(str) + 1);
 	res = _strcpy(res, str);
 
 	return (res);
