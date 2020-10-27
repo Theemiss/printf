@@ -56,7 +56,7 @@ char *print_rot(modifier_t *modif, va_list ap)
 {
 		char *str, *res;
 	if (!ap || !modif)
-		return (0); 
+		return (0);
 	str = va_arg(ap, char *);
 	if (str == NULL)
 	{
@@ -66,7 +66,7 @@ char *print_rot(modifier_t *modif, va_list ap)
 	}
 	if (str[0] == '\0')
 		return (NULL);
-	malloc (sizeof(char)* _strlen(str));
-	res =rot13(str);
+	malloc(sizeof(char) * _strlen(str));
+	res = rot13(str);
 	return (res);
 }
