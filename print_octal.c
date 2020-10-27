@@ -14,9 +14,7 @@ void treat_flags_o(char *flags, char *buffer, int *pos)
 	for (i = 0; flags && flags[i]; i++)
 	{
 		if (flags[i] == '#')
-		{
 			buffer[(*pos)++] = '0';
-		}
 	}
 }
 
