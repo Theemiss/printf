@@ -8,30 +8,33 @@
  * Return: number of printed charachters
  */
 
-int print_binary(modifier_t *modif, va_list ap)
+char *print_binary(modifier_t *modif, va_list ap)
 {
-	unsigned int count = 0, n;
-	int i = -1;
-	char binary[32];
+	unsigned int n;
+	int i = 0, j = 0;
+	char binary[35], *res_str;
 
 	if (!ap || !modif || modif->specifier != 'b')
 		return (0);
 	n = va_arg(ap, unsigned int);
 	if (n == 0)
 	{
-		_putchar('0');
-		return (1);
+		j = 1;
+		res_str = malloc(sizeof(char) * 2);
+		res_str[0] = '0';
 	}
-	while (n)
+	else
 	{
-		i++;
-		binary[i] = '0' + (n % 2);
-		n = n / 2;
+		while (n)
+		{
+			binary[i++] = '0' + (n % 2);
+			n = n / 2;
+		}
+		res_str = malloc(sizeof(char) * i);
+		i--;
+		while (i >= 0)
+			res_str[j++] = binary[i--];
 	}
-	while (i >= 0)
-	{
-		_putchar(binary[i--]);
-		count++;
-	}
-	return (count);
+	res_str[j] = '\0';
+	return (res_str);
 }

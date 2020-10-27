@@ -8,19 +8,20 @@
  * Return: number of printed characters
  */
 
-int print_unsigned_int(modifier_t *modif, va_list ap)
+char *print_unsigned_int(modifier_t *modif, va_list ap)
 {
-	unsigned int count = 0, n;
-	int i = 0;
-	char buffer[10];
+	unsigned int n;
+	int i = 0, j = 0;
+	char buffer[10], *res_str;
 
 	if (!ap || !modif || modif->specifier != 'u')
-		return (0);
+		return (NULL);
 	n = va_arg(ap, unsigned int);
 	if (n == 0)
 	{
-		_putchar('0');
-		count++;
+		j = 1;
+		res_str = malloc(sizeof(char) * 2);
+		res_str[0] = '0';
 	}
 	else
 	{
@@ -29,12 +30,11 @@ int print_unsigned_int(modifier_t *modif, va_list ap)
 			buffer[i++] = (n % 10) + '0';
 			n = n / 10;
 		}
+		res_str = malloc(sizeof(char) * i);
 		i--;
 		while (i >= 0)
-		{
-			_putchar(buffer[i--]);
-			count++;
-		}
+			res_str[j++] = buffer[i--];
 	}
-	return (count);
+	res_str[j] = '\0';
+	return (res_str);
 }

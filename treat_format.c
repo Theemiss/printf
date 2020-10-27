@@ -62,11 +62,13 @@ char *(*get_print_func(char c))(modifier_t *, va_list)
 	   /**
 	    *{'i', print_int},
 	    *{'d', print_int},
-	    *{'u', print_unsigned_int},
-	    *{'o', print_octal},
-	    *{'x', print_hex},
-	    *{'X', print_hex},
-	    *{'b', print_binary},
+	    */
+	    {'u', print_unsigned_int},
+	    {'o', print_octal},
+	    {'x', print_hex},
+	    {'X', print_hex},
+	    {'b', print_binary},
+	    /**
 	    *{'S', print_big_s},
 	    *{'p', print_pointer},
 	    *{'r', print_rev},

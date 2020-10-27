@@ -27,10 +27,10 @@ typedef struct modifier
 
 void *_realloc(void *ptr, unsigned int, unsigned int);
 int _putchar(char c);
-int print_binary(modifier_t *, va_list);
-int print_unsigned_int(modifier_t *, va_list);
-int print_octal(modifier_t *, va_list);
-int print_hex(modifier_t *, va_list);
+char *print_binary(modifier_t *, va_list);
+char *print_unsigned_int(modifier_t *, va_list);
+char *print_octal(modifier_t *, va_list);
+char *print_hex(modifier_t *, va_list);
 char *print_char(modifier_t *, va_list ap);
 int print_int(modifier_t *, va_list ap);
 int print_decimal(modifier_t *, va_list ap);

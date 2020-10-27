@@ -8,11 +8,11 @@
  * Return: number of printed characters
  */
 
-int print_hex(modifier_t *modif, va_list ap)
+char *print_hex(modifier_t *modif, va_list ap)
 {
-	unsigned int count = 0, n, aux;
-	int i = 0;
-	char buffer[8], _case;
+	unsigned int n, aux;
+	int i = 0, j = 0;
+	char buffer[8], _case, *res_str;
 
 	if (!ap || !modif)
 		return (0);
@@ -20,8 +20,9 @@ int print_hex(modifier_t *modif, va_list ap)
 	_case = modif->specifier == 'x' ? 'a' : 'A';
 	if (n == 0)
 	{
-		_putchar('0');
-		count++;
+		j = 1;
+		res_str = malloc(sizeof(char) * 2);
+		res_str[0] = '0';
 	}
 	else
 	{
@@ -34,12 +35,11 @@ int print_hex(modifier_t *modif, va_list ap)
 				buffer[i++] = aux + '0';
 			n = n / 16;
 		}
+		res_str = malloc(sizeof(char) * i);
 		i--;
 		while (i >= 0)
-		{
-			_putchar(buffer[i--]);
-			count++;
-		}
+			res_str[j++] = buffer[i--];
 	}
-	return (count);
+	res_str[j] = '\0';
+	return (res_str);
 }
