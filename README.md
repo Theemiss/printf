@@ -165,7 +165,7 @@ Output:
 ```
 ## Other Features
 This function also Handle :
-* The flag characters for non-custom conversion specifiers (`+` ` ` `#`)
+* The flag characters for non-custom conversion specifiers (`+` `SPACE ` `#`)
 * The length modifiers for non-custom conversion(`d, i, u, o, x, X`) specifiers(`l` `h`) 
 ## Authors
 * Wael Ben Hassen <[benhassenwael](https://github.com/benhassenwael)>
