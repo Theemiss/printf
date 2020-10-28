@@ -155,10 +155,8 @@ specification is `%%`.
 
 Example:
 ```
-int main(void)
-{
     _printf("%%\n");
-}
+
 ```
 Output:
 ```
